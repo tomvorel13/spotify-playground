@@ -12,8 +12,10 @@ export default function Home() {
         <title>Spotify Playground</title>
       </Head>
 
-      <main>
-        <h1>Hi there!</h1>
+      <main className="min-w-screen min-h-screen">
+        <div className="container mx-auto">
+          <h1>Hi there!</h1>
+        </div>
       </main>
     </div>
   )
