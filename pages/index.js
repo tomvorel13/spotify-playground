@@ -1,20 +1,17 @@
 import Head from 'next/head'
-import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher'
+import CurrentTrack from '@/components/CurrentTrack'
 
 export default function Home() {
-  const { data } = useSWR('/api/top-tracks', fetcher)
-
   return (
     <div>
       <Head>
         <title>Spotify Playground</title>
       </Head>
 
-      <main className="min-w-screen min-h-screen">
-        <div className="container mx-auto">
-          <h1>Hi there!</h1>
+      <main className="min-w-screen min-h-screen bg-gray-50 flex flex-col p-4">
+        <div className="container mx-auto flex flex-col">
+          <CurrentTrack />
         </div>
       </main>
     </div>
