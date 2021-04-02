@@ -3,27 +3,26 @@ import Image from 'next/image'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
+import Loader from '@/components/Loader'
 
 const CurrentTrack = () => {
   const { data, error } = useSWR('/api/v1/spotify/current-track', fetcher)
 
-  console.log(data)
-
   if (!data) {
+    return <Loader />
+  }
+
+  if (error) {
     return (
-      <div className="min-w-min	w-1/3 p-4 border-gray-200 border rounded-md self-center flex">
-        <h1 className="text-center">Loading...</h1>
+      <div>
+        <h1>Something went wrong...</h1>
       </div>
     )
   }
 
-  if (error) {
-    return <h1>Something went wrong...</h1>
-  }
-
   return (
     <>
-      <h2 className="w-full md:w-1/2 lg:w-1/3 text-3xl self-center mb-4 text-center">
+      <h2 className="mt-8 w-full md:w-1/2 lg:w-1/3 text-3xl self-center mb-4 text-center">
         {data.isPlaying === false ? `💤 OFFLINE` : `🎧 Listening`}
       </h2>
       {data.isPlaying !== false && (
