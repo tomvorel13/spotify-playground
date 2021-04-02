@@ -10,6 +10,7 @@ export default async (_, res) => {
     title: track.name,
     images: track.album.images,
     album_name: track.album.name,
+    link: track.external_urls.spotify,
   }))
 
   return res.status(200).json({ tracks })

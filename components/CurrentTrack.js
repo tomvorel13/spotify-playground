@@ -22,9 +22,15 @@ const CurrentTrack = () => {
 
   return (
     <>
-      <h2 className="mt-8 w-full md:w-1/2 lg:w-1/3 text-3xl self-center mb-4 text-center">
-        {data.isPlaying === false ? `💤 OFFLINE` : `🎧 Listening`}
-      </h2>
+      {data.isPlaying === false ? (
+        <h2 className="mt-8 w-full md:w-1/2 lg:w-1/3 text-3xl self-center mb-4 text-center">
+          💤 OFFLINE
+        </h2>
+      ) : (
+        <h2 className="mt-8 w-full md:w-1/2 lg:w-1/3 text-3xl self-center mb-4 text-center">
+          <span className="animate-pulse">🎧</span> Listening
+        </h2>
+      )}
       {data.isPlaying !== false && (
         <div className="min-w-min w-full md:w-3/4 lg:w-1/3 p-4 border-gray-200 border rounded-md self-center flex">
           <div className="mr-6">
